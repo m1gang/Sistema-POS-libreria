@@ -6,11 +6,11 @@ Logotipo
     <a href="inicio" class="logo">
         <!--Logo mini-->
         <span class="logo-mini">
-            <img src="vistas/img/plantilla/logo-claro2.png" class="img-responsive" style="padding:10px">
+            <img src="vistas/img/plantilla/logo-oscuro2.png" class="img-responsive" style="padding:10px">
         </span>
         <!--Logo normal-->
         <span class="logo-lg">
-            <img src="vistas/img/plantilla/logo-lineal-claro2.png" class="img-responsive" style="padding:10px 0px">
+            <img src="vistas/img/plantilla/logo-lineal-oscuro2.png" class="img-responsive" style="padding:10px 0px">
         </span>
     </a>
     <!--======================================================================
