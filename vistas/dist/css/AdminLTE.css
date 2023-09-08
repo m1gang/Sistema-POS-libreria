@@ -3394,8 +3394,25 @@ table.text-center th {
 }
 .login-page,
 .register-page {
-  background: #d2d6de;
+  background: linear-gradient(284deg, rgb(57, 102, 109), rgb(12, 16, 26), rgb(95, 179, 126));
+    background-size: 180% 180%;
+    animation: gradient-animation 30s ease infinite;
 }
+
+@keyframes gradient-animation {
+  0% {
+      background-position: 0% 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
 .login-box,
 .register-box {
   width: 360px;
@@ -3414,6 +3431,7 @@ table.text-center th {
   padding: 20px;
   border-top: 0;
   color: #666;
+  border-radius: 15px;
 }
 .login-box-body .form-control-feedback,
 .register-box-body .form-control-feedback {

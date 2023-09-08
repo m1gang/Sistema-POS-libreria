@@ -59,11 +59,17 @@
 // Cuerpo del documento
 //======================================================================-->
 
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 
-        <?php
+
+    <?php
+
+    if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
+
+
+
+        echo '<div class="wrapper">';
+
         /*======================================================================
         // Cabezote
         //======================================================================*/
@@ -80,21 +86,23 @@
         // Contenido
         //======================================================================*/
 
-        
-        if(isset($_GET["ruta"])){
-            if ($_GET["ruta"]=="inicio"||
-            $_GET["ruta"]=="usuarios"||
-            $_GET["ruta"]=="categorias"||
-            $_GET["ruta"]=="productos"||
-            $_GET["ruta"]=="clientes"||
-            $_GET["ruta"]=="ventas"||
-            $_GET["ruta"]=="crear-venta"||
-            $_GET["ruta"]=="reportes") {
-                include "modulos/".$_GET["ruta"].".php";
-            }else{
+
+        if (isset($_GET["ruta"])) {
+            if (
+                $_GET["ruta"] == "inicio" ||
+                $_GET["ruta"] == "usuarios" ||
+                $_GET["ruta"] == "categorias" ||
+                $_GET["ruta"] == "productos" ||
+                $_GET["ruta"] == "clientes" ||
+                $_GET["ruta"] == "ventas" ||
+                $_GET["ruta"] == "crear-venta" ||
+                $_GET["ruta"] == "reportes"
+            ) {
+                include "modulos/" . $_GET["ruta"] . ".php";
+            } else {
                 include "modulos/404.php";
             }
-        }else{
+        } else {
             include "modulos/inicio.php";
         }
 
@@ -103,7 +111,12 @@
         //======================================================================*/
 
         include "modulos/footer.php";
-        ?>
+
+        echo '</div>';
+    }else{
+        include "modulos/login.php";
+    }
+    ?>
 
 
 
