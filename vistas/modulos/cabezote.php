@@ -35,7 +35,7 @@ Barra de navegación
                     <ul class="dropdown-menu">
                         <li class="user-body">
                             <div class="pull-rigth">
-                                <a href="#" class="btn btn-default btn-flat">Salir</a>
+                                <a href="salir" class="btn btn-default btn-flat">Salir</a>
                             </div>
                         </li>
                     </ul>

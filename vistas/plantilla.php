@@ -65,12 +65,9 @@ session_start();
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 
-
     <?php
 
     if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
-
-
 
         echo '<div class="wrapper">';
 
@@ -100,7 +97,8 @@ session_start();
                 $_GET["ruta"] == "clientes" ||
                 $_GET["ruta"] == "ventas" ||
                 $_GET["ruta"] == "crear-venta" ||
-                $_GET["ruta"] == "reportes"
+                $_GET["ruta"] == "reportes"||
+                $_GET["ruta"] == "salir"
             ) {
                 include "modulos/" . $_GET["ruta"] . ".php";
             } else {
