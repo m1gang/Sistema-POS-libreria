@@ -24,7 +24,7 @@
 
       <div class="box-body">
 
-        <table class="table table-responsive-xl">
+        <table class="table table-bordered table-striped dt-responsive tablas">
 
           <thead>
 
