@@ -9,7 +9,7 @@ $('.sidebar-menu').tree()
 Data table
 ======================================================================*/
 $('.tablas').DataTable({
-
+    responsive:true,
     "language":{
         "sProcessing": "Procesando...",
         "sLengthMenu": "Mostrar _MENU_ registros",

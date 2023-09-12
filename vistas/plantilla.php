@@ -69,6 +69,9 @@ session_start();
     <script src="vistas/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
     <script src="vistas/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
 
+    <!-- SweetAlert 2-->
+
+    <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
 </head>
 
 <!--======================================================================
