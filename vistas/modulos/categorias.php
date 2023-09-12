@@ -5,7 +5,7 @@
         Administrar categorías
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#">Inicio</a></li>
+        <li><a href="inicio"><i class="fa fa-home"></i>Inicio</a></li>
         <li class="active"><i class="fa fa-tasks"></i> Administrar categorías</li>
       </ol>
     </section>

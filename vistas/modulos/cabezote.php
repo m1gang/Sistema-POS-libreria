@@ -10,7 +10,7 @@ Logotipo
         </span>
         <!--Logo normal-->
         <span class="logo-lg">
-            <img src="vistas/img/plantilla/logo-lineal-oscuro2.png" class="img-responsive" style="padding:10px 0px">
+            <img src="vistas/img/plantilla/logo-lineal-oscuro1.png" class="img-responsive" style="padding:10px 0px">
         </span>
     </a>
     <!--======================================================================
@@ -27,7 +27,7 @@ Barra de navegación
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="vistas/img/usuarios/default/user-default.png" class="user-image">
+                        <img src="vistas/img/usuarios/default/user-default.svg" class="user-image">
                         <spna class="hidden-xs">Usuario Administrador</spna>
                     </a>
 

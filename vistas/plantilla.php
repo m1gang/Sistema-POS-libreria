@@ -34,7 +34,7 @@ session_start();
     <link rel="stylesheet" href="vistas/dist/css/AdminLTE.css">
 
     <!-- AdminLTE Skins-->
-    <link rel="stylesheet" href="vistas/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="vistas/dist/css/skins/_all-skins.css">
 
     <!-- Google Font -->
     <link rel="stylesheet"

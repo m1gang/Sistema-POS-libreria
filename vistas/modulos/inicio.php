@@ -6,8 +6,8 @@
         <small>Panel de Control</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"> Inicio</a></li>
-        <li class="active"><i class="fa fa-area-chart"></i> Tablero</li>
+        <li><a href="inicio"><i class="fa fa-home"></i>Inicio</a></li>
+        <li class="active"><i class="fa fa-pie-chart"></i>Tablero</li>
       </ol>
     </section>
 

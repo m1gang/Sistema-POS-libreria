@@ -5,7 +5,7 @@
         Crear venta
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-area-chart"></i> Inicio</a></li>
+      <li><a href="inicio"><i class="fa fa-home"></i>Inicio</a></li>
         <li class="active">Crear venta</li>
       </ol>
     </section>
