@@ -4,7 +4,7 @@ class ControladorUsuarios
 {
 
     /*======================================================================
-    // Menu lateral
+    // Ingreso de usuario
     //======================================================================*/
 
     static public function ctrIngresoUsuario()
@@ -15,6 +15,8 @@ class ControladorUsuarios
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])
             ) {
 
+                $encriptar = crypt($_POST["ingPassword"],'$2a$07$vY6x3F45HQSAiOs6N5wMuOwZQ7pUPoSUTBkU');
+
                 $tabla = "usuarios";
 
                 $item = "usuario";
@@ -23,7 +25,7 @@ class ControladorUsuarios
 
                 $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
 
-                if ($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $_POST["ingPassword"]) {
+                if ($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar) {
 
                     $_SESSION["iniciarSesion"] = "ok";
 
@@ -87,7 +89,7 @@ class ControladorUsuarios
 
                     /* ARCHIVO JPG/JPEG */
 
-                    if($_FILES["nuevaFoto"]["type"] == "image/jpeg") {
+                    if ($_FILES["nuevaFoto"]["type"] == "image/jpeg") {
 
                         /* Guardamos la imagen en el directorio */
 
@@ -107,7 +109,7 @@ class ControladorUsuarios
 
                     /* ARCHIVO PNG */
 
-                    if($_FILES["nuevaFoto"]["type"] == "image/png") {
+                    if ($_FILES["nuevaFoto"]["type"] == "image/png") {
 
                         /* Guardamos la imagen en el directorio */
 
@@ -128,10 +130,12 @@ class ControladorUsuarios
 
                 $tabla = "usuarios";
 
+                $encriptar = crypt($_POST["nuevoPassword"],'$2a$07$vY6x3F45HQSAiOs6N5wMuOwZQ7pUPoSUTBkU');
+
                 $datos = array(
                     "nombre" => $_POST["nuevoNombre"],
                     "usuario" => $_POST["nuevoUsuario"],
-                    "password" => $_POST["nuevoPassword"],
+                    "password" => $encriptar,
                     "perfil" => $_POST["nuevoPerfil"],
                     "foto" => $ruta
                 );
