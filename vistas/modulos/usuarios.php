@@ -220,11 +220,11 @@
 
               <div class="panel">Subir Foto</div>
 
-              <input type="file" id="nuevaFoto" name="nuevaFoto">
+              <input type="file" class="nuevaFoto" name="nuevaFoto">
 
-              <p class="help-block">Peso máximo de la foto 200 mb</p>
+              <p class="help-block">Peso máximo de la foto 2 mb</p>
 
-              <img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="100px">
+              <img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail previsualizar" width="100px">
 
             </div>
 
