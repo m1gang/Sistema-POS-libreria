@@ -27,8 +27,23 @@ Barra de navegación
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="vistas/img/usuarios/default/user-default.svg" class="user-image">
-                        <spna class="hidden-xs">Usuario Administrador</spna>
+
+                        <?php
+
+                        if ($_SESSION["foto"] != "") {
+
+                            echo '<img src="'.$_SESSION["foto"].'" class="user-image">';
+
+                        }else{
+
+                            echo '<img src="vistas/img/usuarios/default/userDefault.png" class="user-image">';
+                        }
+
+                        ?>
+
+                        <span class="hidden-xs">
+                            <?php echo $_SESSION["nombre"]; ?>
+                    </span>
                     </a>
 
                     <!--Dropdown-toggle-->
