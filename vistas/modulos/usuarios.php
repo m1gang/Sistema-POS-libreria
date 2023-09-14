@@ -40,16 +40,37 @@
             </tr>
           </thead>
 
+
           <tbody>
+
+          <?php
+          $item = null;
+          $valor=null;
+
+          $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+          foreach ($usuarios as $key => $value) {
+            
+            echo '
             <tr>
 
-              <td>1</td>
-              <td>Usuario Administrador</td>
-              <td>admin</td>
-              <td><img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="40px"></td>
-              <td>Administrador</td>
+              <td>'.$value["id"].'</td>
+              <td>'.$value["nombre"].'</td>
+              <td>'.$value["usuario"].'</td>';
+
+              if ($value["foto"] != "") {
+                
+                echo '<td><img src="'.$value["foto"].'" class="img-thumbnail" width="40px"></td>';
+
+              }else{
+
+                echo '<td><img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="40px"></td>';
+
+              }
+              
+              echo '<td>'.$value["perfil"].'</td>
               <td><button class="btn btn-success btn-xs">Activado</button></td>
-              <td>2023-09-11 12:08:23</td>
+              <td>'.$value["ultimo_login"].'</td>
               <td>
                 <div class="btn-group">
 
@@ -61,48 +82,10 @@
               </td>
 
             </tr>
-
-            <tr>
-
-              <td>1</td>
-              <td>Usuario Administrador</td>
-              <td>admin</td>
-              <td><img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="40px"></td>
-              <td>Administrador</td>
-              <td><button class="btn btn-success btn-xs">Activado</button></td>
-              <td>2023-09-11 12:08:23</td>
-              <td>
-                <div class="btn-group">
-
-                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-
-                </div>
-              </td>
-
-            </tr>
-
-            <tr>
-
-              <td>1</td>
-              <td>Usuario Administrador</td>
-              <td>admin</td>
-              <td><img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="40px"></td>
-              <td>Administrador</td>
-              <td><button class="btn btn-danger btn-xs">Desactivado</button></td>
-              <td>2023-09-11 12:08:23</td>
-              <td>
-                <div class="btn-group">
-
-                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-
-                </div>
-              </td>
-
-            </tr>
+            ';
+          }
+          
+          ?>
 
           </tbody>
 
