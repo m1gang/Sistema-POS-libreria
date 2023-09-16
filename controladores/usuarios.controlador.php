@@ -40,23 +40,23 @@ class ControladorUsuarios
                         /*======================================================================
                         // Registrar fecha para saber el ultimo login
                         //======================================================================*/
-                        
+
                         date_default_timezone_set('America/Lima');
 
                         $fecha = date('Y-m-d');
                         $hora = date('H:i:s');
 
-                        $fechaActual = $fecha.' '.$hora;
+                        $fechaActual = $fecha . ' ' . $hora;
 
                         $item1 = "ultimo_login";
                         $valor1 = $fechaActual;
 
-                        $item2= "id";
-                        $valor2=$respuesta["id"];
+                        $item2 = "id";
+                        $valor2 = $respuesta["id"];
 
-                        $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla,$item1,$valor1,$item2,$valor2);
-                        
-                        if($ultimoLogin == "ok"){
+                        $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+
+                        if ($ultimoLogin == "ok") {
 
                             echo '<script>
     
@@ -197,7 +197,7 @@ class ControladorUsuarios
 
                         if(resultado.value){
 
-                            window.location = "ususarios";
+                            window.location = "usuarios";
 
                         }
 
@@ -352,7 +352,7 @@ class ControladorUsuarios
         
                             if(resultado.value){
                                 
-                                window.location = "ususarios";
+                                window.location = "usuarios";
         
                             }
         
@@ -394,7 +394,7 @@ class ControladorUsuarios
 
                         if(resultado.value){
 
-                            window.location = "ususarios";
+                            window.location = "usuarios";
 
                         }
 
@@ -427,6 +427,54 @@ class ControladorUsuarios
 
             }
         }
-
     }
+
+	/*=============================================
+	Borrar usuario
+	=============================================*/
+
+	static public function ctrBorrarUsuario(){
+
+		if(isset($_GET["idUsuario"])){
+
+			$tabla ="usuarios";
+			$datos = $_GET["idUsuario"];
+
+			if($_GET["fotoUsuario"] != ""){
+
+				unlink($_GET["fotoUsuario"]);
+				rmdir('vistas/img/usuarios/'.$_GET["usuario"]);
+
+			}
+
+			$respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+
+			if($respuesta == "ok"){
+
+				echo'<script>
+
+				swal({
+					  type: "success",
+					  title: "El usuario ha sido borrado correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar",
+					  closeOnConfirm: false
+					  }).then(function(result) {
+								if (result.value) {
+
+								window.location = "usuarios";
+
+								}
+							})
+
+				</script>';
+
+			}		
+
+		}
+
+	}
+
+
 }
+	

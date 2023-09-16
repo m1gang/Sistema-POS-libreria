@@ -7,7 +7,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="inicio"><i class="fa fa-home"></i>Inicio</a></li>
-        <li class="active"><i class="fa fa-pie-chart"></i>Tablero</li>
+        <li class="active"><i class="fa fa-pie-chart"></i> Tablero</li>
       </ol>
     </section>
 
