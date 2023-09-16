@@ -27,18 +27,53 @@ class ControladorUsuarios
 
                 if ($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encriptar) {
 
-                    $_SESSION["iniciarSesion"] = "ok";
-                    $_SESSION["id"] = $respuesta["id"];
-                    $_SESSION["nombre"] = $respuesta["nombre"];
-                    $_SESSION["usuario"] = $respuesta["usuario"];
-                    $_SESSION["foto"] = $respuesta["foto"];
-                    $_SESSION["perfil"] = $respuesta["perfil"];
+                    if ($respuesta["estado"] == 1) {
 
-                    echo '<script>
+                        $_SESSION["iniciarSesion"] = "ok";
+                        $_SESSION["id"] = $respuesta["id"];
+                        $_SESSION["nombre"] = $respuesta["nombre"];
+                        $_SESSION["usuario"] = $respuesta["usuario"];
+                        $_SESSION["foto"] = $respuesta["foto"];
+                        $_SESSION["perfil"] = $respuesta["perfil"];
 
-                        window.location = "inicio";
+
+                        /*======================================================================
+                        // Registrar fecha para saber el ultimo login
+                        //======================================================================*/
                         
-                    </script>';
+                        date_default_timezone_set('America/Lima');
+
+                        $fecha = date('Y-m-d');
+                        $hora = date('H:i:s');
+
+                        $fechaActual = $fecha.' '.$hora;
+
+                        $item1 = "ultimo_login";
+                        $valor1 = $fechaActual;
+
+                        $item2= "id";
+                        $valor2=$respuesta["id"];
+
+                        $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla,$item1,$valor1,$item2,$valor2);
+                        
+                        if($ultimoLogin == "ok"){
+
+                            echo '<script>
+    
+                            window.location = "inicio";
+                            
+                        </script>';
+
+                        }
+
+                    } else {
+
+                        echo '<br>
+                        <div class="alert alert-danger">El usuario aun no esta activado</div>';
+
+                    }
+
+
 
                 } else {
 
