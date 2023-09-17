@@ -121,7 +121,7 @@
 
     <div class="modal-content">
 
-      <form role="fomr" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data">
       <!--======================================================================
       // Cabeza del modal
       //======================================================================-->
@@ -263,7 +263,7 @@
 
     <div class="modal-content">
 
-      <form role="fomr" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data">
       <!--======================================================================
       // Cabeza del modal
       //======================================================================-->
