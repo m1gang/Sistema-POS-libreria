@@ -69,12 +69,14 @@
             <tr>
 
               <td>1</td>
-              <td>Usuario Administrador</td>
-              <td>admin</td>
-              <td><img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="40px"></td>
-              <td>Administrador</td>
-              <td><button class="btn btn-success btn-xs">Activado</button></td>
-              <td>2023-09-11 12:08:23</td>
+              <td><img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="40px"></td>
+              <td>0001PROD</td>
+              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$ 5.00</td>
+              <td>$ 10.00</td>
+              <td>2023-09-19 09:17:45</td>
               <td>
                 <div class="btn-group">
 
@@ -90,12 +92,14 @@
             <tr>
 
               <td>1</td>
-              <td>Usuario Administrador</td>
-              <td>admin</td>
-              <td><img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="40px"></td>
-              <td>Administrador</td>
-              <td><button class="btn btn-danger btn-xs">Desactivado</button></td>
-              <td>2023-09-11 12:08:23</td>
+              <td><img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="40px"></td>
+              <td>0001PROD</td>
+              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$ 5.00</td>
+              <td>$ 10.00</td>
+              <td>2023-09-19 09:17:45</td>
               <td>
                 <div class="btn-group">
 
@@ -107,6 +111,8 @@
               </td>
 
             </tr>
+
+
 
           </tbody>
 
@@ -124,7 +130,7 @@
 // Modal agregar usuario
 //======================================================================-->
 
-<div id="modalAgregarUsuarios" class="modal fade" role="dialog">
+<div id="modalAgregarProducto" class="modal fade" role="dialog">
 
   <div class="modal-dialog">
 
@@ -139,7 +145,7 @@
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar usuario</h4>
+          <h4 class="modal-title">Agregar prodcuto</h4>
 
         </div>
 
@@ -151,84 +157,148 @@
 
           <div class="box-body">
 
-            <!-- Entrada para el nombre -->
+            <!-- Entrada para el codigo -->
 
             <div class="form-group">
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre"
+                <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar código"
                   required>
 
               </div>
 
             </div>
 
-            <!-- Entrada para el usuario -->
+            <!-- Entrada para la Descripción -->
 
             <div class="form-group">
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                <span class="input-group-addon"><i class="fa fa-commenting"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingresar usuario"
-                  required>
+                <input type="text" class="form-control input-lg" name="nuevaDescripcion"
+                  placeholder="Ingresar descripción" required>
 
               </div>
 
             </div>
 
-            <!-- Entrada para la contraseña -->
+            <!-- Entrada para seleccionar categoria -->
 
             <div class="form-group">
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
 
-                <input type="password" class="form-control input-lg" name="nuevoPassword"
-                  placeholder="Ingresar contraseña" required>
+                <select name="nuevaCategoria" class="form-control input-lg">
 
-              </div>
+                  <option value="">Seleccionar categoria</option>
 
-            </div>
+                  <option value="Accesorios">Accesorios</option>
 
-            <!-- Entrada para seleccionar su perfil -->
+                  <option value="Oficina">Oficina</option>
 
-            <div class="form-group">
+                  <option value="Escritura">Escritura</option>
 
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-
-                <select name="nuevoPerfil" class="form-control input-lg">
-
-                  <option value="">Seleccionar perfil</option>
-
-                  <option value="Administrador">Adminitrador</option>
-
-                  <option value="Especial">Especial</option>
-
-                  <option value="Vendedor">Vendedor</option>
+                  <option value="Servicios">Servicios</option>
 
                 </select>
               </div>
 
             </div>
 
+            <!-- Entrada para el stock -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-check-square"></i></span>
+
+                <input type="number" class="form-control input-lg" name="nuevoStock" min="0" placeholder="Stock"
+                  required>
+
+              </div>
+
+            </div>
+
+            <!-- Entrada para precio compra -->
+
+            <div class="form-group row">
+
+              <div class="col-xs-6">
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
+
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0"
+                    placeholder="Precio de compra" required>
+
+                </div>
+              </div>
+
+
+              <div class="col-xs-6">
+
+                <!-- Entrada para precio venta -->
+
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
+
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0"
+                    placeholder="Precio de venta" required>
+
+                </div>
+
+                <br>
+
+                <!-- Checkbox para porcentaje -->
+                <div class="col-xs-6">
+
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" class="minimal porcentaje" checked>
+                      Utilizar porcentaje
+                    </label>
+                  </div>
+
+                </div>
+
+                <!-- Entrada para porcentaje -->
+
+                <div class="col-xs-6" style="padding:0">
+
+                  <div class="input-group">
+
+                    <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
+
+                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
             <!-- Entrada para subir foto -->
             <div class="form-group">
 
-              <div class="panel">Subir Foto</div>
+              <div class="panel">Subir Imagen</div>
 
-              <input type="file" id="nuevaFoto" name="nuevaFoto">
+              <input type="file" id="nuevaImagen" name="nuevaImagen">
 
-              <p class="help-block">Peso máximo de la foto 200 mb</p>
+              <p class="help-block">Peso máximo de la imagen 20 mb</p>
 
-              <img src="vistas/img/usuarios/default/user-default.svg" class="img-thumbnail" width="100px">
+              <img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="100px">
 
             </div>
 
@@ -244,7 +314,7 @@
 
           <button type="button" class="btn btn-warning pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar usuario</button>
+          <button type="submit" class="btn btn-primary">Guardar producto</button>
 
         </div>
 
