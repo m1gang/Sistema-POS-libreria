@@ -143,6 +143,7 @@ session_start();
 
     <script src="vistas/js/plantilla.js"></script>
     <script src="vistas/js/usuarios.js"></script>
+    <script src="vistas/js/categorias.js"></script>
 
 </body>
 
