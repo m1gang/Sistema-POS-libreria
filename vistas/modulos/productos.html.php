@@ -24,10 +24,9 @@
 
       <div class="box-body">
 
-        <table class="table table-bordered table-striped dt-responsive tablaProductos" width="100%">
+        <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
 
           <thead>
-            <img src="/" alt="">
 
             <tr>
               <th>#</th>
@@ -41,8 +40,81 @@
               <th>Agregado</th>
               <th>Acciones</th>
             </tr>
-
           </thead>
+
+          <tbody>
+            <tr>
+
+              <td>1</td>
+              <td><img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="40px"></td>
+              <td>0001PROD</td>
+              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$ 5.00</td>
+              <td>$ 10.00</td>
+              <td>2023-09-19 09:17:45</td>
+              <td>
+                <div class="btn-group">
+
+                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+
+                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+
+                </div>
+              </td>
+
+            </tr>
+
+            <tr>
+
+              <td>1</td>
+              <td><img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="40px"></td>
+              <td>0001PROD</td>
+              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$ 5.00</td>
+              <td>$ 10.00</td>
+              <td>2023-09-19 09:17:45</td>
+              <td>
+                <div class="btn-group">
+
+                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+
+                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+
+                </div>
+              </td>
+
+            </tr>
+
+            <tr>
+
+              <td>1</td>
+              <td><img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="40px"></td>
+              <td>0001PROD</td>
+              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+              <td>Lorem ipsum</td>
+              <td>20</td>
+              <td>$ 5.00</td>
+              <td>$ 10.00</td>
+              <td>2023-09-19 09:17:45</td>
+              <td>
+                <div class="btn-group">
+
+                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+
+                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+
+                </div>
+              </td>
+
+            </tr>
+
+
+
+          </tbody>
 
         </table>
 
