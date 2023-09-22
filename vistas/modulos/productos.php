@@ -65,6 +65,8 @@
     <div class="modal-content">
 
       <form role="fomr" method="post" enctype="multipart/form-data">
+
+
         <!--======================================================================
       // Cabeza del modal
       //======================================================================-->
@@ -85,6 +87,38 @@
 
           <div class="box-body">
 
+            <!-- Entrada para seleccionar categoria -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+
+                <select name="nuevaCategoria" id="nuevaCategoria" class="form-control input-lg" required>
+
+                  <option value="">Seleccionar categoria</option>
+
+                  <?php
+
+                  $item = null;
+                  $valor = null;
+
+                  $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                  foreach ($categorias as $key => $value) {
+
+                    echo '<option value="' . $value["id"] . '">' . $value["categoria"] . '</option>';
+
+                  }
+                  ?>
+
+                </select>
+              </div>
+
+            </div>
+
+
             <!-- Entrada para el codigo -->
 
             <div class="form-group">
@@ -93,8 +127,8 @@
 
                 <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar código"
-                  required>
+                <input type="text" class="form-control input-lg" name="nuevoCodigo" id="nuevoCodigo" placeholder="Ingresar código"
+                  required readonly>
 
               </div>
 
@@ -115,30 +149,6 @@
 
             </div>
 
-            <!-- Entrada para seleccionar categoria -->
-
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
-
-                <select name="nuevaCategoria" class="form-control input-lg">
-
-                  <option value="">Seleccionar categoria</option>
-
-                  <option value="Accesorios">Accesorios</option>
-
-                  <option value="Oficina">Oficina</option>
-
-                  <option value="Escritura">Escritura</option>
-
-                  <option value="Servicios">Servicios</option>
-
-                </select>
-              </div>
-
-            </div>
 
             <!-- Entrada para el stock -->
 
@@ -164,7 +174,7 @@
 
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
 
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0"
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" id="nuevoPrecioCompra" min="0"
                     placeholder="Precio de compra" required>
 
                 </div>
@@ -179,7 +189,7 @@
 
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
 
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0"
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" id="nuevoPrecioVenta" min="0"
                     placeholder="Precio de venta" required>
 
                 </div>
@@ -247,6 +257,12 @@
         </div>
 
       </form>
+
+      <?php
+
+      $crearProducto = new ControladorProductos();
+      $crearProducto -> ctrCrearProducto();
+      ?>
 
     </div>
 
