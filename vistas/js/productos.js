@@ -69,14 +69,14 @@ $("#nuevaCategoria").change(function () {
 		dataType: "json",
 		success: function (respuesta) {
 
-			if(!respuesta){
+			if (!respuesta) {
 
-				var nuevoCodigo = idCategoria+"01";
+				var nuevoCodigo = idCategoria + "01";
 				$("#nuevoCodigo").val(nuevoCodigo);
 
-			}else{
+			} else {
 
-				var nuevoCodigo = Number(respuesta["codigo"])+1;
+				var nuevoCodigo = Number(respuesta["codigo"]) + 1;
 				$("#nuevoCodigo").val(nuevoCodigo);
 
 			}
@@ -92,17 +92,17 @@ $("#nuevaCategoria").change(function () {
 /*======================================================================
 // Agregando precio de venta
 //======================================================================*/
-$("#nuevoPrecioCompra").change(function(){
+$("#nuevoPrecioCompra").change(function () {
 
 	if ($(".porcentaje").prop("checked")) {
 
 		var valorPorcentaje = $(".nuevoPorcentaje").val();
-		
-		var porcentaje = Number($("#nuevoPrecioCompra").val())*(Number(valorPorcentaje)+100)/100;
+
+		var porcentaje = Number($("#nuevoPrecioCompra").val()) * (Number(valorPorcentaje) + 100) / 100;
 
 		$("#nuevoPrecioVenta").val(porcentaje);
-		$("#nuevoPrecioVenta").prop("readonly",true);
-		
+		$("#nuevoPrecioVenta").prop("readonly", true);
+
 	}
 
 })
@@ -110,29 +110,79 @@ $("#nuevoPrecioCompra").change(function(){
 /*======================================================================
 // Cambio de porcentaje
 //======================================================================*/
-$(".nuevoPorcentaje").change(function(){
+$(".nuevoPorcentaje").change(function () {
 
 	if ($(".porcentaje").prop("checked")) {
 
 		var valorPorcentaje = $(".nuevoPorcentaje").val();
-		
-		var porcentaje = Number($("#nuevoPrecioCompra").val())*(Number(valorPorcentaje)+100)/100;
+
+		var porcentaje = Number($("#nuevoPrecioCompra").val()) * (Number(valorPorcentaje) + 100) / 100;
 
 		$("#nuevoPrecioVenta").val(porcentaje);
-		$("#nuevoPrecioVenta").prop("readonly",true);
-		
+		$("#nuevoPrecioVenta").prop("readonly", true);
+
 	}
 
 })
 
-$(".porcentaje").on("ifUnchecked",function(){
+$(".porcentaje").on("ifUnchecked", function () {
 
-	$("#nuevoPrecioVenta").prop("readonly",false);
-	
+	$("#nuevoPrecioVenta").prop("readonly", false);
+
 })
 
-$(".porcentaje").on("ifChecked",function(){
+$(".porcentaje").on("ifChecked", function () {
 
-	$("#nuevoPrecioVenta").prop("readonly",true);
-	
+	$("#nuevoPrecioVenta").prop("readonly", true);
+
+})
+
+/*=============================================
+SUBIENDO LA FOTO DEL PRODUCTO
+=============================================*/
+
+$(".nuevaImagen").change(function () {
+
+	var imagen = this.files[0];
+
+	/*=============================================
+		VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+		=============================================*/
+
+	if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
+
+		$(".nuevaImagen").val("");
+
+		swal({
+			title: "Error al subir la imagen",
+			text: "¡La imagen debe estar en formato JPG o PNG!",
+			type: "error",
+			confirmButtonText: "¡Cerrar!"
+		});
+
+	} else if (imagen["size"] > 2000000) {
+
+		$(".nuevaImagen").val("");
+
+		swal({
+			title: "Error al subir la imagen",
+			text: "¡La imagen no debe pesar más de 2MB!",
+			type: "error",
+			confirmButtonText: "¡Cerrar!"
+		});
+
+	} else {
+
+		var datosImagen = new FileReader;
+		datosImagen.readAsDataURL(imagen);
+
+		$(datosImagen).on("load", function (event) {
+
+			var rutaImagen = event.target.result;
+
+			$(".previsualizar").attr("src", rutaImagen);
+
+		})
+
+	}
 })

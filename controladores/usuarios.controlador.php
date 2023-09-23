@@ -88,52 +88,55 @@ class ControladorUsuarios
     // Registro de usuario
     //======================================================================*/
 
-	static public function ctrCrearUsuario(){
+    static public function ctrCrearUsuario()
+    {
 
-		if(isset($_POST["nuevoUsuario"])){
+        if (isset($_POST["nuevoUsuario"])) {
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
+            if (
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])
+            ) {
 
                 /* validar imagen */
 
                 $ruta = "";
 
-				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+                if (isset($_FILES["nuevaFoto"]["tmp_name"])) {
 
-					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+                    list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
 
-					$nuevoAncho = 500;
-					$nuevoAlto = 500;
+                    $nuevoAncho = 500;
+                    $nuevoAlto = 500;
 
                     /* Creamos directorio donde vamos a guardar la foto del usuario */
 
-					$directorio = "vistas/img/usuarios/".$_POST["nuevoUsuario"];
+                    $directorio = "vistas/img/usuarios/" . $_POST["nuevoUsuario"];
 
-					mkdir($directorio, 0755);
+                    mkdir($directorio, 0755);
 
                     /* De acuerdo al tipo de imagen aplicamos las funciones por defecto de php */
 
                     /* ARCHIVO JPG/JPEG */
 
-                    if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+                    if ($_FILES["nuevaFoto"]["type"] == "image/jpeg") {
 
                         /* Guardamos la imagen en el directorio */
 
-						$aleatorio = mt_rand(100,999);
+                        $aleatorio = mt_rand(100, 999);
 
-						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+                        $ruta = "vistas/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".jpg";
 
-						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);						
+                        $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
 
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 
-						imagejpeg($destino, $ruta);
+                        imagejpeg($destino, $ruta);
 
-					}
+                    }
 
                     /* ARCHIVO PNG */
 
@@ -141,37 +144,39 @@ class ControladorUsuarios
 
                         /* Guardamos la imagen en el directorio */
 
-                        $aleatorio = mt_rand(100,999);
+                        $aleatorio = mt_rand(100, 999);
 
-						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+                        $ruta = "vistas/img/usuarios/" . $_POST["nuevoUsuario"] . "/" . $aleatorio . ".png";
 
-						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);						
+                        $origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
 
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 
-						imagepng($destino, $ruta);
+                        imagepng($destino, $ruta);
 
-					}
+                    }
 
-				}
+                }
 
-				$tabla = "usuarios";
+                $tabla = "usuarios";
 
-				$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+                $encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-				$datos = array("nombre" => $_POST["nuevoNombre"],
-					           "usuario" => $_POST["nuevoUsuario"],
-					           "password" => $encriptar,
-					           "perfil" => $_POST["nuevoPerfil"],
-					           "foto"=>$ruta);
+                $datos = array(
+                    "nombre" => $_POST["nuevoNombre"],
+                    "usuario" => $_POST["nuevoUsuario"],
+                    "password" => $encriptar,
+                    "perfil" => $_POST["nuevoPerfil"],
+                    "foto" => $ruta
+                );
 
-				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-			
-				if($respuesta == "ok"){
+                $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
 
-					echo '<script>
+                if ($respuesta == "ok") {
+
+                    echo '<script>
 
 					swal({
 
@@ -194,12 +199,12 @@ class ControladorUsuarios
 					</script>';
 
 
-				}	
+                }
 
 
-			}else{
+            } else {
 
-				echo '<script>
+                echo '<script>
 
 					swal({
 
@@ -221,13 +226,13 @@ class ControladorUsuarios
 
 				</script>';
 
-			}
+            }
 
 
-		}
+        }
 
 
-	}
+    }
 
 
     /*======================================================================
@@ -426,29 +431,30 @@ class ControladorUsuarios
         }
     }
 
-	/*=============================================
-	Borrar usuario
-	=============================================*/
+    /*=============================================
+       Borrar usuario
+       =============================================*/
 
-	static public function ctrBorrarUsuario(){
+    static public function ctrBorrarUsuario()
+    {
 
-		if(isset($_GET["idUsuario"])){
+        if (isset($_GET["idUsuario"])) {
 
-			$tabla ="usuarios";
-			$datos = $_GET["idUsuario"];
+            $tabla = "usuarios";
+            $datos = $_GET["idUsuario"];
 
-			if($_GET["fotoUsuario"] != ""){
+            if ($_GET["fotoUsuario"] != "") {
 
-				unlink($_GET["fotoUsuario"]);
-				rmdir('vistas/img/usuarios/'.$_GET["usuario"]);
+                unlink($_GET["fotoUsuario"]);
+                rmdir('vistas/img/usuarios/' . $_GET["usuario"]);
 
-			}
+            }
 
-			$respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
+            $respuesta = ModeloUsuarios::mdlBorrarUsuario($tabla, $datos);
 
-			if($respuesta == "ok"){
+            if ($respuesta == "ok") {
 
-				echo'<script>
+                echo '<script>
 
 				swal({
 					  type: "success",
@@ -466,12 +472,11 @@ class ControladorUsuarios
 
 				</script>';
 
-			}		
+            }
 
-		}
+        }
 
-	}
+    }
 
 
 }
-	

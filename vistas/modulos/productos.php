@@ -1,13 +1,21 @@
 <div class="content-wrapper">
 
   <section class="content-header">
+
     <h1>
+
       Administrar productos
+
     </h1>
+
     <ol class="breadcrumb">
+
       <li><a href="inicio"><i class="fa fa-home"></i>Inicio</a></li>
+
       <li class="active"><i class="fa fa-archive"></i> Administrar productos</li>
+
     </ol>
+
   </section>
 
   <section class="content">
@@ -169,19 +177,19 @@
 
             <div class="form-group row">
 
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="input-group">
 
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
 
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" id="nuevoPrecioCompra" min="0"
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" id="nuevoPrecioCompra" min="0" step="any"
                     placeholder="Precio de compra" required>
 
                 </div>
               </div>
 
 
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6" >
 
                 <!-- Entrada para precio venta -->
 
@@ -189,7 +197,7 @@
 
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
 
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" id="nuevoPrecioVenta" min="0"
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" id="nuevoPrecioVenta" min="0" step=""
                     placeholder="Precio de venta" required>
 
                 </div>
@@ -232,11 +240,11 @@
 
               <div class="panel">Subir Imagen</div>
 
-              <input type="file" id="nuevaImagen" name="nuevaImagen">
+              <input type="file" class="nuevaImagen" name="nuevaImagen">
 
               <p class="help-block">Peso máximo de la imagen 20 mb</p>
 
-              <img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail previsualizar" width="100px">
 
             </div>
 
