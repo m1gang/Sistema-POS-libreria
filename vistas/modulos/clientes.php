@@ -1,19 +1,19 @@
 <div class="content-wrapper">
 
   <section class="content-header">
-
+    
     <h1>
-
+      
       Administrar clientes
-
+    
     </h1>
 
     <ol class="breadcrumb">
-
-      <li><a href="inicio"><i class="fa fa-home"></i>Inicio</a></li>
-
-      <li class="active"><i class="fa fa-handshake-o"></i> Administrar clientes</li>
-
+      
+      <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      
+      <li class="active">Administrar clientes</li>
+    
     </ol>
 
   </section>
@@ -23,9 +23,9 @@
     <div class="box">
 
       <div class="box-header with-border">
-
+  
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCliente">
-
+          
           Agregar cliente
 
         </button>
@@ -33,72 +33,71 @@
       </div>
 
       <div class="box-body">
+        
+       <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+         
+        <thead>
+         
+         <tr>
+           
+           <th style="width:10px">#</th>
+           <th>Nombre</th>
+           <th>Documento ID</th>
+           <th>Email</th>
+           <th>Teléfono</th>
+           <th>Dirección</th>
+           <th>Fecha nacimiento</th> 
+           <th>Total compras</th>
+           <th>Última compra</th>
+           <th>Ingreso al sistema</th>
+           <th>Acciones</th>
 
-        <table class="table table-bordered table-striped dt-responsive tablas">
+         </tr> 
 
-          <thead>
+        </thead>
 
-            <tr>
+        <tbody>
+          
+          <tr>
 
-              <th style="width:10px">#</th>
-              <th>Nombre</th>
-              <th>DNI</th>
-              <th>Email</th>
-              <th>Teléfono</th>
-              <th>Dirección</th>
-              <th>Fecha de nacimiento</th>
-              <th>Total de compras</th>
-              <th>Ultima compra</th>
-              <th>Ingreso al sistema</th>
-              <th>Acciones</th>
+            <td>1</td>
 
-            </tr>
+            <td>Juan Villegas</td>
 
-          </thead>
+            <td>8161123</td>
 
-          <tbody>
+            <td>juan@hotmail.com</td>
 
-            <tr>
+            <td>555 57 67</td>
 
-              <td>1</td>
+            <td>calle 27 # 40 - 36</td>
 
-              <td>Alexander Gomez Perez</td>
+            <td>1982-15-11</td>
 
-              <td>76449026</td>
+            <td>2017-12-11 12:05:32</td>
 
-              <td>alexander01@gmail.com</td>
+            <td>35</td>
 
-              <td>983645788</td>
+            <td>2017-12-11 12:05:32</td>
 
-              <td>Av. La cantuta #180</td>
+            <td>
 
-              <td>Alexander Gomez Perez</td>
+              <div class="btn-group">
+                  
+                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
 
-              <td>1987-15-11</td>
+                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
 
-              <td>2023-09-22 10:39:26</td>
+              </div>  
 
-              <td>25</td>
+            </td>
 
-              <td>2023-09-22 10:39:26</td>
+          </tr>
 
-              <td>
+          
+        </tbody>
 
-                <div class="btn-group">
-
-                  <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-
-                </div>
-
-              </td>
-
-            </tr>
-
-          </tbody>
-
-        </table>
+       </table>
 
       </div>
 
@@ -109,11 +108,11 @@
 </div>
 
 <!--=====================================
-Modal agregar cliente
+MODAL AGREGAR CLIENTE
 ======================================-->
 
 <div id="modalAgregarCliente" class="modal fade" role="dialog">
-
+  
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -124,7 +123,7 @@ Modal agregar cliente
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header" style="background:#1f2020;color:white">
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -140,96 +139,90 @@ Modal agregar cliente
 
           <div class="box-body">
 
-            <!-- Entrada para el nombre -->
-
+            <!-- ENTRADA PARA EL NOMBRE -->
+            
             <div class="form-group">
-
+              
               <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevoCliente" placeholder="Ingresar nombre"
-                  required>
+                <input type="text" class="form-control input-lg" name="nuevoCliente" placeholder="Ingresar nombre" required>
 
               </div>
 
             </div>
 
-            <!-- Entrada para el DNI -->
-
+            <!-- ENTRADA PARA EL DOCUMENTO ID -->
+            
             <div class="form-group">
-
+              
               <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId"
-                  placeholder="Ingresar DNI" required>
+                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
 
               </div>
 
             </div>
 
-            <!-- Entrada para el email -->
-
+            <!-- ENTRADA PARA EL EMAIL -->
+            
             <div class="form-group">
-
+              
               <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
 
-                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                <input type="email" min="0" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email"
-                  required>
+                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
 
               </div>
 
             </div>
 
-            <!-- Entrada para el teléfono -->
-
+            <!-- ENTRADA PARA EL TELÉFONO -->
+            
             <div class="form-group">
-
+              
               <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
 
-                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono"
-                  data-inputmask="'mask':'(999) 999-9999'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
 
               </div>
 
             </div>
 
-            <!-- Entrada para la direccíon -->
-
+            <!-- ENTRADA PARA LA DIRECCIÓN -->
+            
             <div class="form-group">
-
+              
               <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
 
-                <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección"
-                  required>
+                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección" required>
 
               </div>
 
             </div>
 
-            <!-- Entrada para la fecha de nacimiento -->
-
+             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
+            
             <div class="form-group">
-
+              
               <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
 
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento"
-                  placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
               </div>
 
             </div>
-
+  
           </div>
 
         </div>

@@ -57,3 +57,16 @@ $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
   checkboxClass: 'icheckbox_flat-green',
   radioClass: 'iradio_flat-green'
 })
+
+
+
+/*=============================================
+ //input Mask
+=============================================*/
+
+//Datemask dd/mm/yyyy
+$('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+//Datemask2 mm/dd/yyyy
+$('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+//Money Euro
+$('[data-mask]').inputmask()
