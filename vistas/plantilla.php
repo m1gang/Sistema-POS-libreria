@@ -78,6 +78,7 @@ session_start();
 
     <!-- iCheck 1.0.1 -->
     <script src="vistas/plugins/iCheck/icheck.min.js"></script>
+
 </head>
 
 <!--======================================================================

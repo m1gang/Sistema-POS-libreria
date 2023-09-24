@@ -72,7 +72,7 @@
 
     <div class="modal-content">
 
-      <form role="fomr" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data">
 
 
         <!--======================================================================
@@ -135,8 +135,8 @@
 
                 <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoCodigo" id="nuevoCodigo" placeholder="Ingresar código"
-                  required readonly>
+                <input type="text" class="form-control input-lg" name="nuevoCodigo" id="nuevoCodigo"
+                  placeholder="Ingresar código" required readonly>
 
               </div>
 
@@ -182,14 +182,14 @@
 
                   <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
 
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" id="nuevoPrecioCompra" min="0" step="any"
-                    placeholder="Precio de compra" required>
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" id="nuevoPrecioCompra"
+                    min="0" step="any" placeholder="Precio de compra" required>
 
                 </div>
               </div>
 
 
-              <div class="col-xs-12 col-sm-6" >
+              <div class="col-xs-12 col-sm-6">
 
                 <!-- Entrada para precio venta -->
 
@@ -197,8 +197,8 @@
 
                   <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
 
-                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" id="nuevoPrecioVenta" min="0" step=""
-                    placeholder="Precio de venta" required>
+                  <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" id="nuevoPrecioVenta"
+                    min="0" step="any" placeholder="Precio de venta" required>
 
                 </div>
 
@@ -244,7 +244,8 @@
 
               <p class="help-block">Peso máximo de la imagen 20 mb</p>
 
-              <img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail previsualizar" width="100px">
+              <img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail previsualizar"
+                width="100px">
 
             </div>
 
@@ -269,10 +270,221 @@
       <?php
 
       $crearProducto = new ControladorProductos();
-      $crearProducto -> ctrCrearProducto();
+      $crearProducto->ctrCrearProducto();
       ?>
 
     </div>
 
   </div>
 </div>
+
+<!--=====================================
+Modal editar producto
+======================================-->
+
+<div id="modalEditarProducto" class="modal fade" role="dialog">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <form role="form" method="post" enctype="multipart/form-data">
+
+
+        <!--======================================================================
+      // Cabeza del modal
+      //======================================================================-->
+
+        <div class="modal-header" style="background:#1f2020;color:white">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          <h4 class="modal-title">Editar prodcuto</h4>
+
+        </div>
+
+        <!--======================================================================
+      // Cuerpo del modal
+      //======================================================================-->
+
+        <div class="modal-body">
+
+          <div class="box-body">
+
+            <!-- Entrada para seleccionar categoria -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+
+                <select name="editarCategoria" class="form-control input-lg" required readonly>
+
+                  <option id="editarCategoria"></option>
+
+                </select>
+              </div>
+
+            </div>
+
+
+            <!-- Entrada para el codigo -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+
+                <input type="text" class="form-control input-lg" name="editarCodigo" id="editarCodigo" required
+                  readonly>
+
+              </div>
+
+            </div>
+
+            <!-- Entrada para la Descripción -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-commenting"></i></span>
+
+                <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion"
+                  required>
+
+              </div>
+
+            </div>
+
+
+            <!-- Entrada para el stock -->
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-cubes"></i></span>
+
+                <input type="number" class="form-control input-lg" id="editarStock" name="editarStock" min="0" required>
+
+              </div>
+
+            </div>
+
+            <!-- Entrada para precio compra -->
+
+            <div class="form-group row">
+
+              <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
+
+                  <input type="number" class="form-control input-lg" name="editarPrecioCompra" id="editarPrecioCompra"
+                    min="0" step="any" required>
+
+                </div>
+              </div>
+
+
+              <div class="col-xs-12 col-sm-6">
+
+                <!-- Entrada para precio venta -->
+
+                <div class="input-group">
+
+                  <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
+
+                  <input type="number" class="form-control input-lg" name="editarPrecioVenta" id="editarPrecioVenta"
+                    min="0" step="any" required readonly>
+
+                </div>
+
+                <br>
+
+                <!-- Checkbox para porcentaje -->
+                <div class="col-xs-6">
+
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" class="flat-red porcentaje" checked>
+                      Utilizar porcentaje
+                    </label>
+                  </div>
+
+                </div>
+
+                <!-- Entrada para porcentaje -->
+
+                <div class="col-xs-6" style="padding:0">
+
+                  <div class="input-group">
+
+                    <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
+
+                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+            <!-- Entrada para subir foto -->
+            <div class="form-group">
+
+              <div class="panel">Subir Imagen</div>
+
+              <input type="file" class="nuevaImagen" name="editarImagen">
+
+              <p class="help-block">Peso máximo de la imagen 2 mb</p>
+
+              <img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail previsualizar"
+                width="100px">
+
+              <input type="hidden" name="imagenActual" id="imagenActual">
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!--======================================================================
+      // Pie de página del modal
+      //======================================================================-->
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-warning pull-left" data-dismiss="modal">Salir</button>
+
+          <button type="submit" class="btn btn-primary">Guardar cambio</button>
+
+        </div>
+
+      </form>
+
+      <?php
+
+      $editarProducto = new ControladorProductos();
+      $editarProducto -> ctrEditarProducto();
+
+      ?>
+
+    </div>
+
+  </div>
+</div>
+
+<?php
+
+  $eliminarProducto = new ControladorProductos();
+  $eliminarProducto -> ctrEliminarProducto();
+
+?>      
