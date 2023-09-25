@@ -57,37 +57,28 @@
         </thead>
 
         <tbody>
+          
+          <tr>
 
-        <?php
+            <td>1</td>
 
-          $item = null;
-          $valor = null;
+            <td>Juan Villegas</td>
 
-          $clientes = ControladorClientes::ctrMostrarClientes($item,$valor);
+            <td>8161123</td>
 
-          foreach ($clientes as $key => $value) {
-            
-            echo '<tr>
+            <td>juan@hotmail.com</td>
 
-            <td>'.($key+1).'</td>
+            <td>555 57 67</td>
 
-            <td>'.$value["nombre"].'</td>
+            <td>calle 27 # 40 - 36</td>
 
-            <td>'.$value["documento"].'</td>
+            <td>1982-15-11</td>
 
-            <td>'.$value["email"].'</td>
+            <td>2017-12-11 12:05:32</td>
 
-            <td>'.$value["telefono"].'</td>
+            <td>35</td>
 
-            <td>'.$value["direccion"].'</td>
-
-            <td>'.$value["fecha_nacimiento"].'</td>
-
-            <td>'.$value["compras"].'</td>
-
-            <td>0000-00-00 00:00:00</td>
-
-            <td>'.$value["fecha"].'</td>
+            <td>2017-12-11 12:05:32</td>
 
             <td>
 
@@ -101,11 +92,7 @@
 
             </td>
 
-          </tr>';
-          }
-        ?>
-          
-          
+          </tr>
 
           
         </tbody>
@@ -202,7 +189,7 @@ MODAL AGREGAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-999'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
 
               </div>
 
@@ -253,12 +240,6 @@ MODAL AGREGAR CLIENTE
         </div>
 
       </form>
-
-      <?php
-
-      $crearCliente = new ControladorClientes();
-      $crearCliente -> ctrCrearCliente();
-      ?>
 
     </div>
 
