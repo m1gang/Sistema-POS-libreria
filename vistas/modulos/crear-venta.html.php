@@ -32,7 +32,7 @@
           
           <div class="box-header with-border"></div>
 
-          <form role="form" method="post" class="formularioVenta">
+          <form role="form" metohd="post">
 
             <div class="box-body">
   
@@ -48,9 +48,8 @@
                     
                     <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                    <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
+                    <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="Usuario Administrador" readonly>
 
-                    <input type="hidden" name="idVendedor" value="<?php echo $_SESSION["id"]; ?>">
                   </div>
 
                 </div> 
@@ -64,37 +63,8 @@
                   <div class="input-group">
                     
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
-
-                    <?php
-
-                    $item = null;
-                    $valor = null;
-
-                    $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
-
-                    if(!$ventas){
-
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10001" readonly>';
-                  
-
-                    }else{
-
-                      foreach ($ventas as $key => $value) {
-                        
-                        
-                      
-                      }
-
-                      $codigo = $value["codigo"] + 1;
-
-
-
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-                  
-
-                    }
-
-                    ?>
+                    
+                    <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10002343" readonly>
                   
                   </div>
                 
@@ -114,22 +84,6 @@
 
                     <option value="">Seleccionar cliente</option>
 
-                    <?php
-
-                      $item = null;
-                      $valor = null;
-
-                      $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
-
-                       foreach ($categorias as $key => $value) {
-
-                         echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
-
-                       }
-
-                    ?>
-
-
                     </select>
                     
                     <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>
@@ -144,7 +98,41 @@
 
                 <div class="form-group row nuevoProducto">
 
+                  <!-- Descripción del producto -->
                   
+                  <div class="col-xs-6" style="padding-right:0px">
+                  
+                    <div class="input-group">
+                      
+                      <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></span>
+
+                      <input type="text" class="form-control" id="agregarProducto" name="agregarProducto" placeholder="Descripción del producto" required>
+
+                    </div>
+
+                  </div>
+
+                  <!-- Cantidad del producto -->
+
+                  <div class="col-xs-3">
+                    
+                     <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" placeholder="0" required>
+
+                  </div> 
+
+                  <!-- Precio del producto -->
+
+                  <div class="col-xs-3" style="padding-left:0px">
+
+                    <div class="input-group">
+
+                      <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                         
+                      <input type="number" min="1" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" placeholder="000000" readonly required>
+         
+                    </div>
+                     
+                  </div> 
 
                 </div>
 
@@ -280,7 +268,7 @@
 
           <div class="box-body">
             
-            <table class="table table-bordered table-striped dt-responsive tablaVentas" width="100%">
+            <table class="table table-bordered table-striped dt-responsive tablas">
               
                <thead>
 
@@ -294,6 +282,23 @@
                 </tr>
 
               </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>1.</td>                 
+                  <td><img src="vistas/img/productos/default/producto-default.png" class="img-thumbnail" width="40px"></td>
+                  <td>00123</td>
+                  <td>Lorem ipsum dolor sit amet</td>       
+                  <td>20</td>                 
+                  <td>                 
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary">Agregar</button> 
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
 
             </table>
 
