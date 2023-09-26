@@ -29,16 +29,42 @@ class AjaxProductos
     =============================================*/
 
     public $idProducto;
-  
-    public function ajaxEditarProducto(){
-  
-      $item = "id";
-      $valor = $this->idProducto;
+    public $traerProductos;
+    public $nombreProducto;
 
-      $respuesta = ControladorProductos::ctrMostrarProductos($item,$valor);
+    public function ajaxEditarProducto()
+    {
 
-      echo json_encode($respuesta);
-  
+        if ($this->traerProductos == "ok") {
+
+            $item = null;
+            $valor = null;
+
+            $respuesta = ControladorProductos::ctrMostrarProductos($item,$valor);
+
+            echo json_encode($respuesta);
+
+
+        }else if($this->nombreProducto != ""){
+
+            $item = "descripcion";
+            $valor = $this->nombreProducto;
+      
+            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+      
+            echo json_encode($respuesta);
+      
+          }else{
+            $item = "id";
+            $valor = $this->idProducto;
+    
+            $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+    
+            echo json_encode($respuesta);
+        }
+
+
+
     }
 
 
@@ -58,12 +84,37 @@ if (isset($_POST["idCategoria"])) {
 
 /*=============================================
 Editar producto
-=============================================*/ 
+=============================================*/
 
-if(isset($_POST["idProducto"])){
+if (isset($_POST["idProducto"])) {
 
     $editarProducto = new AjaxProductos();
-    $editarProducto -> idProducto = $_POST["idProducto"];
-    $editarProducto -> ajaxEditarProducto();
+    $editarProducto->idProducto = $_POST["idProducto"];
+    $editarProducto->ajaxEditarProducto();
+
+}
+
+/*=============================================
+Traer productos
+=============================================*/
+
+if (isset($_POST["traerProductos"])) {
+
+    $traerProductos = new AjaxProductos();
+    $traerProductos->traerProductos = $_POST["traerProductos"];
+    $traerProductos->ajaxEditarProducto();
+
+}
+
+/*=============================================
+nombre PRODUCTO
+=============================================*/ 
+
+if(isset($_POST["nombreProducto"])){
+
+    $traerProductos = new AjaxProductos();
+    $traerProductos -> nombreProducto = $_POST["nombreProducto"];
+    $traerProductos -> ajaxEditarProducto();
   
   }
+  
