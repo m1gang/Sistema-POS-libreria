@@ -227,26 +227,16 @@
                   
                       <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
                         <option value="">Seleccione método de pago</option>
-                        <option value="efectivo">Efectivo</option>
-                        <option value="tarjetaCredito">Tarjeta Crédito</option>
-                        <option value="tarjetaDebito">Tarjeta Débito</option>                  
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="TC">Tarjeta Crédito</option>
+                        <option value="TD">Tarjeta Débito</option>                  
                       </select>    
 
                     </div>
 
                   </div>
 
-                  <div class="col-xs-6" style="padding-left:0px">
-                        
-                    <div class="input-group">
-                         
-                      <input type="text" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion" placeholder="Código transacción"  required>
-                           
-                      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                      
-                    </div>
-
-                  </div>
+                  <div class="cajasMetodoPago"></div>
 
                 </div>
 
