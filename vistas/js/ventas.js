@@ -145,6 +145,10 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
 
             agregarImpuesto()
 
+            // AGRUPAR PRODUCTOS EN FORMATO JSON
+
+            listarProductos()
+
             //PONER FORMATO AL PRECUI DE LOS PRODUCTOS
 
             $(".nuevoPrecioProducto").number(true, 2);
@@ -231,6 +235,9 @@ $(".formularioVenta").on("click", "button.quitarProducto", function () {
 
         agregarImpuesto()
 
+        // AGRUPAR PRODUCTOS EN FORMATO JSON
+
+        listarProductos()
 
     }
 
@@ -370,9 +377,15 @@ $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function (
         dataType: "json",
         success: function (respuesta) {
 
+            $(nuevaDescripcionProducto).attr("idProducto", respuesta["id"]);
             $(nuevaCantidadProducto).attr("stock", respuesta["stock"]);
+            $(nuevaCantidadProducto).attr("nuevoStock", Number(respuesta["stock"])-1);
             $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
             $(nuevoPrecioProducto).attr("precioReal", respuesta["precio_venta"]);
+
+            // AGRUPAR PRODUCTOS EN FORMATO JSON
+
+            listarProductos()
 
         }
 
@@ -427,6 +440,10 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function () {
     // AGREGAR IMPUESTO
 
     agregarImpuesto()
+
+    // AGRUPAR PRODUCTOS EN FORMATO JSON
+
+    listarProductos()
 
 })
 
@@ -509,87 +526,118 @@ $("#nuevoTotalVenta").number(true, 2);
 SELECCIONAR MÉTODO DE PAGO
 =============================================*/
 
-$("#nuevoMetodoPago").change(function(){
+$("#nuevoMetodoPago").change(function () {
 
-	var metodo = $(this).val();
+    var metodo = $(this).val();
 
-	if(metodo == "Efectivo"){
+    if (metodo == "Efectivo") {
 
-		$(this).parent().parent().removeClass("col-xs-6");
+        $(this).parent().parent().removeClass("col-xs-6");
 
-		$(this).parent().parent().addClass("col-xs-4");
+        $(this).parent().parent().addClass("col-xs-4");
 
-		$(this).parent().parent().parent().children(".cajasMetodoPago").html(
+        $(this).parent().parent().parent().children(".cajasMetodoPago").html(
 
-			 '<div class="col-xs-4">'+ 
+            '<div class="col-xs-4">' +
 
-			 	'<div class="input-group">'+ 
+            '<div class="input-group">' +
 
-			 		'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+ 
+            '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
 
-			 		'<input type="text" class="form-control" id="nuevoValorEfectivo" placeholder="000000" required>'+
+            '<input type="text" class="form-control" id="nuevoValorEfectivo" placeholder="000000" required>' +
 
-			 	'</div>'+
+            '</div>' +
 
-			 '</div>'+
+            '</div>' +
 
-			 '<div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">'+
+            '<div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">' +
 
-			 	'<div class="input-group">'+
+            '<div class="input-group">' +
 
-			 		'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+            '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>' +
 
-			 		'<input type="text" class="form-control" id="nuevoCambioEfectivo" placeholder="000000" readonly required>'+
+            '<input type="text" class="form-control" id="nuevoCambioEfectivo" placeholder="000000" readonly required>' +
 
-			 	'</div>'+
+            '</div>' +
 
-			 '</div>'
+            '</div>'
 
-		 )
+        )
 
-		// Agregar formato al precio
+        // Agregar formato al precio
 
-		$('#nuevoValorEfectivo').number( true, 2);
-      	$('#nuevoCambioEfectivo').number( true, 2);
+        $('#nuevoValorEfectivo').number(true, 2);
+        $('#nuevoCambioEfectivo').number(true, 2);
 
 
-	}else{
+    } else {
 
-		$(this).parent().parent().removeClass('col-xs-4');
+        $(this).parent().parent().removeClass('col-xs-4');
 
-		$(this).parent().parent().addClass('col-xs-6');
+        $(this).parent().parent().addClass('col-xs-6');
 
-		 $(this).parent().parent().parent().children('.cajasMetodoPago').html(
+        $(this).parent().parent().parent().children('.cajasMetodoPago').html(
 
-		 	'<div class="col-xs-6" style="padding-left:0px">'+
-                        
-                '<div class="input-group">'+
-                     
-                  '<input type="number" min="0" class="form-control" id="nuevoCodigoTransaccion" placeholder="Código transacción"  required>'+
-                       
-                  '<span class="input-group-addon"><i class="fa fa-lock"></i></span>'+
-                  
-                '</div>'+
+            '<div class="col-xs-6" style="padding-left:0px">' +
 
-              '</div>')
+            '<div class="input-group">' +
 
-	}
+            '<input type="number" min="0" class="form-control" id="nuevoCodigoTransaccion" placeholder="Código transacción"  required>' +
 
-	
+            '<span class="input-group-addon"><i class="fa fa-lock"></i></span>' +
+
+            '</div>' +
+
+            '</div>')
+
+    }
+
+
 
 })
 
 /*=============================================
 CAMBIO EN EFECTIVO
 =============================================*/
-$(".formularioVenta").on("change", "input#nuevoValorEfectivo", function(){
+$(".formularioVenta").on("change", "input#nuevoValorEfectivo", function () {
 
-	var efectivo = $(this).val();
+    var efectivo = $(this).val();
 
-	var cambio =  Number(efectivo) - Number($('#nuevoTotalVenta').val());
+    var cambio = Number(efectivo) - Number($('#nuevoTotalVenta').val());
 
-	var nuevoCambioEfectivo = $(this).parent().parent().parent().children('#capturarCambioEfectivo').children().children('#nuevoCambioEfectivo');
+    var nuevoCambioEfectivo = $(this).parent().parent().parent().children('#capturarCambioEfectivo').children().children('#nuevoCambioEfectivo');
 
-	nuevoCambioEfectivo.val(cambio);
+    nuevoCambioEfectivo.val(cambio);
 
 })
+
+/*=============================================
+LISTAR TODOS LOS PRODUCTOS
+=============================================*/
+
+function listarProductos() {
+
+    var listaProductos = [];
+
+    var descripcion = $(".nuevaDescripcionProducto");
+
+    var cantidad = $(".nuevaCantidadProducto");
+
+    var precio = $(".nuevoPrecioProducto");
+
+    for (var i = 0; i < descripcion.length; i++) {
+
+        listaProductos.push({
+            "id": $(descripcion[i]).attr("idProducto"),
+            "descripcion": $(descripcion[i]).val(),
+            "cantidad": $(cantidad[i]).val(),
+            "stock": $(cantidad[i]).attr("nuevoStock"),
+            "precio": $(precio[i]).attr("precioReal"),
+            "total": $(precio[i]).val()
+        })
+
+    }
+
+    $("#listaProductos").val(JSON.stringify(listaProductos)); 
+
+}
