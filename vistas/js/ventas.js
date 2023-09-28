@@ -569,6 +569,9 @@ $("#nuevoMetodoPago").change(function () {
         $('#nuevoValorEfectivo').number(true, 2);
         $('#nuevoCambioEfectivo').number(true, 2);
 
+        // listar metodo en la entrada
+        listarMetodos()
+
 
     } else {
 
@@ -612,6 +615,18 @@ $(".formularioVenta").on("change", "input#nuevoValorEfectivo", function () {
 })
 
 /*=============================================
+CAMBIO TRANSACCIÓN
+=============================================*/
+$(".formularioVenta").on("change", "input#nuevoCodigoTransaccion", function(){
+
+	// Listar método en la entrada
+     listarMetodos()
+
+
+})
+
+
+/*=============================================
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
 
@@ -639,5 +654,25 @@ function listarProductos() {
     }
 
     $("#listaProductos").val(JSON.stringify(listaProductos)); 
+
+}
+
+/*=============================================
+LISTAR MÉTODO DE PAGO
+=============================================*/
+
+function listarMetodos(){
+
+	var listaMetodos = "";
+
+	if($("#nuevoMetodoPago").val() == "Efectivo"){
+
+		$("#listaMetodoPago").val("Efectivo");
+
+	}else{
+
+		$("#listaMetodoPago").val($("#nuevoMetodoPago").val()+"-"+$("#nuevoCodigoTransaccion").val());
+
+	}
 
 }
