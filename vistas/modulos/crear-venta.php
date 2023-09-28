@@ -210,6 +210,8 @@
                               <input type="number" min="1" class="form-control input-lg" id="nuevoTotalVenta"
                                 name="nuevoTotalVenta" placeholder="00000" readonly required>
 
+                              <input type="hidden" name="totalVenta" id="totalVenta">
+
 
                             </div>
 
@@ -249,7 +251,7 @@
                   </div>
 
                   <div class="cajasMetodoPago"></div>
-                  
+
                   <input type="hidden" name="listaMetodoPago" id="listaMetodoPago">
 
                 </div>
@@ -267,6 +269,14 @@
             </div>
 
           </form>
+
+          <?php
+
+          $guardarVenta = new ControladorVentas();
+          $guardarVenta -> ctrCrearVenta();
+
+
+          ?>
 
         </div>
 
