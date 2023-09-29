@@ -61,42 +61,73 @@
 
           <tbody>
 
-            <tr>
+            <?php
 
-              <td>1</td>
+            $item = null;
+            $valor = null;
 
-              <td>1000123</td>
+            $respuesta = ControladorVentas::ctrMostrarVentas($item, $valor);
 
-              <td>Juan Villegas</td>
+            foreach ($respuesta as $key => $value) {
 
-              <td>Julio Gómez</td>
+              echo '<tr>
 
-              <td>Efectivo</td>
+                  <td>' . ($key + 1) . '</td>
 
-              <td>$ 1,000.00</td>
+                  <td>' . $value["codigo"] . '</td>';
 
-              <td>$ 1,190.00</td>
+              $itemCliente = "id";
+              $valorCliente = $value["id_cliente"];
 
-              <td>2017-12-11 12:05:32</td>
+              $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
 
-              <td>
+              echo '<td>' . $respuestaCliente["nombre"] . '</td>';
 
-                <div class="btn-group">
+              $itemUsuario = "id";
+              $valorUsuario = $value["id_vendedor"];
 
-                  <button class="btn btn-info"><i class="fa fa-print"></i></button>
+              $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
 
-                  <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+              echo '<td>' . $respuestaUsuario["nombre"] . '</td>
 
-                </div>
+                  <td>' . $value["metodo_pago"] . '</td>
 
-              </td>
+                  <td>$ ' . number_format($value["neto"], 2) . '</td>
 
-            </tr>
+                  <td>$ ' . number_format($value["total"], 2) . '</td>
 
+                  <td>' . $value["fecha"] . '</td>
 
+                  <td>
+
+                    <div class="btn-group">
+                        
+                      <button class="btn btn-info btnImprimirFactura" codigoVenta="' . $value["codigo"] . '">
+                      <i class="fa fa-print"></i> 
+                      </button>
+
+                      <button class="btn btn-warning btnEditarVenta" idVenta="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>
+
+                      <button class="btn btn-danger btnEliminarVenta" idVenta="' . $value["id"] . '"><i class="fa fa-times"></i></button>
+                  
+                    </div>  
+
+                  </td>
+
+                </tr>';
+            }
+
+            ?>
           </tbody>
 
         </table>
+
+        <?php
+
+        $eliminarVenta = new ControladorVentas();
+        $eliminarVenta->ctrEliminarVenta();
+
+        ?>
 
       </div>
 
