@@ -184,8 +184,9 @@ EOF;
 
             $itemProducto = "descripcion";
             $valorProducto = $item["descripcion"];
+			$orden = null;
 
-            $respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto);
+            $respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto,$orden);
 
             $valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
 

@@ -49,7 +49,7 @@ Barra de navegación
                     <!--Dropdown-toggle-->
                     <ul class="dropdown-menu">
                         <li class="user-body">
-                            <div class="pull-rigth">
+                            <div class="pull-right">
                                 <a href="salir" class="btn btn-default btn-flat">Salir</a>
                             </div>
                         </li>

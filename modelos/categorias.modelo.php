@@ -4,32 +4,33 @@ require_once "conexion.php";
 
 class ModeloCategorias{
 
-    /*======================================================================
-    // Crear categoria
-    //======================================================================*/
+	/*=============================================
+	CREAR CATEGORIA
+	=============================================*/
 
-    public static function mdlIngresarCategoria($tabla,$datos){
+	static public function mdlIngresarCategoria($tabla, $datos){
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(categoria) VALUES (:categoria)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(categoria) VALUES (:categoria)");
 
-        $stmt->bindParam(":categoria",  $datos, PDO::PARAM_STR);
-    
-        if ($stmt->execute()) {
-            
-            return "ok";
+		$stmt->bindParam(":categoria", $datos, PDO::PARAM_STR);
 
-        }else{
+		if($stmt->execute()){
 
-            return "error";
+			return "ok";
 
-        }
+		}else{
 
-        $stmt -> close();
-        $stmt = null;
-    }
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
 
 	/*=============================================
-	// Mostrar categoria
+	MOSTRAR CATEGORIAS
 	=============================================*/
 
 	static public function mdlMostrarCategorias($tabla, $item, $valor){
@@ -59,8 +60,9 @@ class ModeloCategorias{
 		$stmt = null;
 
 	}
+
 	/*=============================================
-	Editar categoria
+	EDITAR CATEGORIA
 	=============================================*/
 
 	static public function mdlEditarCategoria($tabla, $datos){
@@ -86,7 +88,7 @@ class ModeloCategorias{
 	}
 
 	/*=============================================
-	Borrar categoria
+	BORRAR CATEGORIA
 	=============================================*/
 
 	static public function mdlBorrarCategoria($tabla, $datos){
@@ -110,4 +112,6 @@ class ModeloCategorias{
 		$stmt = null;
 
 	}
+
 }
+

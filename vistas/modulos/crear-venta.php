@@ -1,3 +1,19 @@
+<?php
+
+if($_SESSION["perfil"] == "Especial"){
+
+  echo '<script>
+
+    window.location = "inicio";
+
+  </script>';
+
+  return;
+
+}
+
+?>
+
 <div class="content-wrapper">
 
   <section class="content-header">
@@ -9,11 +25,11 @@
     </h1>
 
     <ol class="breadcrumb">
-
-      <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-
-      <li class="active">Crear venta</li>
-
+      
+      <li><a href="inicio"><i class="fa fa-home"></i> Inicio</a></li>
+      
+      <li class="active"><i class="fa fa-cart-plus"></i> Crear Venta</li>
+    
     </ol>
 
   </section>
@@ -189,7 +205,7 @@
                             <div class="input-group">
 
                               <input type="number" class="form-control input-lg" min="0" id="nuevoImpuestoVenta"
-                                name="nuevoImpuestoVenta" placeholder="0" required>
+                                name="nuevoImpuestoVenta" placeholder="0" value="0" required>
 
                               <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" required>
 
@@ -205,7 +221,7 @@
 
                             <div class="input-group">
 
-                              <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                              <span class="input-group-addon" style="font-weight: 900;font-size: 18px">S/.</span>
 
                               <input type="number" min="1" class="form-control input-lg" id="nuevoTotalVenta"
                                 name="nuevoTotalVenta" placeholder="00000" readonly required>

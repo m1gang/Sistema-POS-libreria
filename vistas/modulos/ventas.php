@@ -1,3 +1,18 @@
+<?php
+
+if($_SESSION["perfil"] == "Especial"){
+
+  echo '<script>
+
+    window.location = "inicio";
+
+  </script>';
+
+  return;
+
+}
+?>
+
 <div class="content-wrapper">
 
   <section class="content-header">
@@ -10,9 +25,9 @@
 
     <ol class="breadcrumb">
 
-      <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
+      <li><a href="inicio"><i class="fa fa-home"></i> Inicio</a></li>
 
-      <li class="active">Administrar ventas</li>
+      <li class="active"><i class="fa fa-shopping-cart"></i> Administrar ventas</li>
 
     </ol>
 
@@ -33,6 +48,17 @@
           </button>
 
         </a>
+
+        <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+
+          <span>
+            <i class="fa fa-calendar"></i> Rango de fecha
+
+          </span>
+
+          <i class="fa fa-caret-down"></i>
+
+        </button>
 
       </div>
 
@@ -63,10 +89,19 @@
 
             <?php
 
-            $item = null;
-            $valor = null;
+            if (isset($_GET["fechaInicial"])) {
 
-            $respuesta = ControladorVentas::ctrMostrarVentas($item, $valor);
+              $fechaInicial = $_GET["fechaInicial"];
+              $fechaFinal = $_GET["fechaFinal"];
+
+            } else {
+
+              $fechaInicial = null;
+              $fechaFinal = null;
+
+            }
+
+            $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
 
             foreach ($respuesta as $key => $value) {
 
@@ -92,9 +127,9 @@
 
                   <td>' . $value["metodo_pago"] . '</td>
 
-                  <td>$ ' . number_format($value["neto"], 2) . '</td>
+                  <td>S/. ' . number_format($value["neto"], 2) . '</td>
 
-                  <td>$ ' . number_format($value["total"], 2) . '</td>
+                  <td>S/. ' . number_format($value["total"], 2) . '</td>
 
                   <td>' . $value["fecha"] . '</td>
 
@@ -104,13 +139,17 @@
                         
                       <button class="btn btn-info btnImprimirFactura" codigoVenta="' . $value["codigo"] . '">
                       <i class="fa fa-print"></i> 
-                      </button>
+                      </button>';
 
-                      <button class="btn btn-warning btnEditarVenta" idVenta="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>
+              if ($_SESSION["perfil"] == "Administrador") {
 
-                      <button class="btn btn-danger btnEliminarVenta" idVenta="' . $value["id"] . '"><i class="fa fa-times"></i></button>
-                  
-                    </div>  
+                echo '<button class="btn btn-warning btnEditarVenta" idVenta="' . $value["id"] . '"><i class="fa fa-pencil"></i></button>
+
+                      <button class="btn btn-danger btnEliminarVenta" idVenta="' . $value["id"] . '"><i class="fa fa-times"></i></button>';
+
+              }
+
+              echo '</div>  
 
                   </td>
 
